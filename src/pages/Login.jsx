@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { Col, Row, Image, Form, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import {AuthContext} from "../App";
+import { AuthContext } from "../App";
 
 const qs = require("querystring");
 
 const api = "http://localhost:3001";
 
-const Login = () => {
+const Login = (props) => {
+
   const {dispatch} = useContext(AuthContext);
 
   const initialState = {
@@ -55,6 +56,9 @@ const Login = () => {
             type: "LOGIN",
             payload: res.data,
           });
+
+          props.history.push('/home')
+
         } else {
           setData({
             ...data,

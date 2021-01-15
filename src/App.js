@@ -11,6 +11,8 @@ import {
 import Login from "../src/pages/Login";
 import Register from "../src/pages/Register";
 import Home from "./pages/Home";
+import LandingPage from "./pages/LandingPage";
+import Transaksi from "../src/pages/Transaksi";
 
 // membuat Context
 export const AuthContext = createContext();
@@ -43,34 +45,33 @@ const reducer = (state, action) => {
         user: null,
       };
 
+
     default:
       return state;
   }
 };
 
 function App() {
-
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <div className="App">
       <Container>
         <AuthContext.Provider value={{ state, dispatch }}>
-          <NavigationBar></NavigationBar>
           <Router>
+            <NavigationBar></NavigationBar>
             <Switch>
-              {!state.isAuth ? (
-                <Redirect to={{ pathname: "/" }} />
-              ) : (
-                <Redirect to={{ pathname: "/home" }} />
-              )}
+              <Route exact path="/" component={LandingPage}></Route>
             </Switch>
-            <Switch>
-              <Route exact path="/" component={Login}></Route>
-            </Switch>
-              <Route exact path="/register" component={Register}></Route>
             <Switch>
               <Route exact path="/home" component={Home}></Route>
+            </Switch>
+            <Switch>
+              <Route exact path="/login" component={Login}></Route>
+            </Switch>
+            <Route exact path="/register" component={Register}></Route>
+            <Switch>
+              <Route exact path="/transaksi" component={Transaksi}></Route>
             </Switch>
           </Router>
         </AuthContext.Provider>
