@@ -23,6 +23,7 @@ const initialState = {
   isAuth: false,
   token: null,
   user: null,
+  tokenExpires: 0
 };
 
 // membuat reducer
@@ -36,6 +37,7 @@ const reducer = (state, action) => {
         isAuth: true,
         user: action.payload.user,
         token: action.payload.token,
+        tokenExpires: action.payload.expires
       };
 
     case "LOGOUT":

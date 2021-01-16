@@ -38,7 +38,7 @@ const Register = () => {
               </Button>
             </Form>
             <p className="mt-3 text-center">
-              Sudah Punya Akun? <Link to="/">Login</Link>
+              Sudah Punya Akun? <Link to="/login">Login</Link>
             </p>
           </div>
         </Col>

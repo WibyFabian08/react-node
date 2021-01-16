@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../App";
 import { Table, Button } from "react-bootstrap";
-import axios from "axios";
+import axios from "axios"
+import { AuthContext } from '../App';
 
 const api = "http://localhost:3001";
 
@@ -10,9 +10,22 @@ const ListMahasiswa = () => {
     
     useEffect(() => {
       fetchData();
+      timeOut();
     }, []);
 
+
+    var timeOut = () => {
+      setTimeout(() => {
+        console.log('Token kadaluarsa');
+        dispatch({
+          type: "LOGOUT"
+        })
+      }, state.tokenExpires)
+    }
+
   const [mahasiswa, setMahasiswa] = useState([]);
+
+  const {state, dispatch} = useContext(AuthContext);
 
   let token = JSON.parse(localStorage.getItem("token"));
 
