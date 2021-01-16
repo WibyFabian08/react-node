@@ -13,6 +13,7 @@ import Register from "../src/pages/Register";
 import Home from "./pages/Home";
 import LandingPage from "./pages/LandingPage";
 import Transaksi from "../src/pages/Transaksi";
+import ListMahasiswa from "./pages/ListMahasiswa";
 
 // membuat Context
 export const AuthContext = createContext();
@@ -55,7 +56,7 @@ function App() {
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
-    <div className="App">
+    <div>
       <Container>
         <AuthContext.Provider value={{ state, dispatch }}>
           <Router>
@@ -72,6 +73,9 @@ function App() {
             <Route exact path="/register" component={Register}></Route>
             <Switch>
               <Route exact path="/transaksi" component={Transaksi}></Route>
+            </Switch>
+            <Switch>
+              <Route exact path="/mahasiswa" component={ListMahasiswa}></Route>
             </Switch>
           </Router>
         </AuthContext.Provider>

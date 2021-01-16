@@ -6,17 +6,19 @@ import { Link } from "react-router-dom";
 const NavigationBar = () => {
   const { state, dispatch } = useContext(AuthContext);
 
-  if (!state.isAuth) {
+  let token = JSON.parse(localStorage.getItem('token'));
+
+  if (!token) {
     return (
       <div>
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#">
             <strong>UWeb</strong>Shop
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link className="text-dark">Home</Nav.Link>
+              <Nav.Link className="text-dark" as={Link} to='/'>Home</Nav.Link>
             </Nav>
             <Form inline>
               <Button variant="outline-secondary" as={Link} to="/login">
@@ -31,27 +33,24 @@ const NavigationBar = () => {
     return (
       <div>
         <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#home">
+          <Navbar.Brand href="#">
             <strong>UWeb</strong>Shop
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto">
-              <Nav.Link className="text-dark">Home</Nav.Link>
+              <Nav.Link className="text-dark" as={Link} to='/'>Home</Nav.Link>
               <NavDropdown
                 title="Dropdown"
                 id="basic-nav-dropdown"
                 className="text-white"
               >
-                <NavDropdown.Item href="#action/3.1">AutoCad</NavDropdown.Item>
-                <NavDropdown.Item>Building Materials</NavDropdown.Item>
-                <NavDropdown.Item>Google SketchUp</NavDropdown.Item>
-                <NavDropdown.Item>Halooo</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/transaksi'>Transaksi</NavDropdown.Item>
+                <NavDropdown.Item as={Link} to='/mahasiswa'>Mahasiswa</NavDropdown.Item>
                 <NavDropdown.Divider />
                 <NavDropdown.Item href="https://github.com/WibyFabian08">
                   My github
                 </NavDropdown.Item>
-                <NavDropdown.Item>About Me</NavDropdown.Item>
               </NavDropdown>
             </Nav>
             <Form inline>

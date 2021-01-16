@@ -15,9 +15,6 @@ const LandingPage = () => {
             the midst of this pandemic by providing easy and fast service, you
             just have to sit at home and we are ready to serve your needs.
           </p>
-          <Button variant="outline-secondary mt-2">
-            Get Started
-          </Button>
         </Col>
         <Col className="mt-5">
           <Image src="assets/cart.png" width="600"></Image>

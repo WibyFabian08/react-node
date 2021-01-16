@@ -6,7 +6,9 @@ const Home = () => {
 
     const {state, dispatch} = useContext(AuthContext);
 
-    if(!state.isAuth) {
+    let token = JSON.parse(localStorage.getItem('token'));
+
+    if(!token) {
         return <Redirect to={'/login'}></Redirect>
     }
     return (
