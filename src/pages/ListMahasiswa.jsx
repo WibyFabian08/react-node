@@ -10,18 +10,18 @@ const ListMahasiswa = () => {
     
     useEffect(() => {
       fetchData();
-      timeOut();
+      // timeOut();
     }, []);
 
 
-    var timeOut = () => {
-      setTimeout(() => {
-        console.log('Token kadaluarsa');
-        dispatch({
-          type: "LOGOUT"
-        })
-      }, state.tokenExpires)
-    }
+    // var timeOut = () => {
+    //   setTimeout(() => {
+    //     console.log('Token kadaluarsa');
+    //     dispatch({
+    //       type: "LOGOUT"
+    //     })
+    //   }, state.tokenExpires)
+    // }
 
   const [mahasiswa, setMahasiswa] = useState([]);
 

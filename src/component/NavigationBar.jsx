@@ -1,76 +1,35 @@
 import React, { useContext } from "react";
-import { Navbar, Button, Form, Nav, NavDropdown } from "react-bootstrap";
 import { AuthContext } from "../App";
-import { Link } from "react-router-dom";
+import NavbarAdmin from './navbarRole/NavbarAdmin';
+import NavbarMember from './navbarRole/NavbarMember';
+import NavbarStaff from './navbarRole/NavbarStaff';
+import NavbarAll from './navbarRole/NavbarAll';
 
 const NavigationBar = () => {
-  const { state, dispatch } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
 
   let token = JSON.parse(localStorage.getItem('token'));
 
   if (!token) {
     return (
       <div>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#">
-            <strong>UWeb</strong>Shop
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link className="text-dark" as={Link} to='/'>Home</Nav.Link>
-            </Nav>
-            <Form inline>
-              <Button variant="outline-secondary" as={Link} to="/login">
-                Login
-              </Button>
-            </Form>
-          </Navbar.Collapse>
-        </Navbar>
+        <NavbarAll></NavbarAll>
       </div>
     );
   } else {
-    return (
-      <div>
-        <Navbar bg="light" expand="lg">
-          <Navbar.Brand href="#">
-            <strong>UWeb</strong>Shop
-          </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="mr-auto">
-              <Nav.Link className="text-dark" as={Link} to='/'>Home</Nav.Link>
-              <NavDropdown
-                title="Dropdown"
-                id="basic-nav-dropdown"
-                className="text-white"
-              >
-                <NavDropdown.Item as={Link} to='/transaksi'>Transaksi</NavDropdown.Item>
-                <NavDropdown.Item as={Link} to='/mahasiswa'>Mahasiswa</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="https://github.com/WibyFabian08">
-                  My github
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form inline>
-              <Button
-                variant="outline-secondary"
-                onClick={() =>
-                  dispatch({
-                    type: "LOGOUT",
-                  })
-                }
-                as={Link}
-                to="/login"
-              >
-                Logout
-              </Button>
-            </Form>
-          </Navbar.Collapse>
-        </Navbar>
-      </div>
-    );
+    if(state.role == 1) {
+      return (
+        <NavbarStaff></NavbarStaff>
+      )
+    } else if(state.role == 2) {
+        return (
+          <NavbarAdmin></NavbarAdmin>
+        )
+    } else if(state.role == 3) {
+      return (
+        <NavbarMember></NavbarMember>
+      )
+    }
   }
 };
 
