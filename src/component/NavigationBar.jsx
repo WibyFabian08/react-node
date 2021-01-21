@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../App";
-import NavbarAdmin from './navbarRole/NavbarAdmin';
-import NavbarMember from './navbarRole/NavbarMember';
-import NavbarStaff from './navbarRole/NavbarStaff';
-import NavbarAll from './navbarRole/NavbarAll';
+import { NavbarAdmin, NavbarMember, NavbarStaff, NavbarPublik } from './navbarRole';
 
 const NavigationBar = () => {
   const { state } = useContext(AuthContext);
@@ -13,7 +10,7 @@ const NavigationBar = () => {
   if (!token) {
     return (
       <div>
-        <NavbarAll></NavbarAll>
+        <NavbarPublik></NavbarPublik>
       </div>
     );
   } else {

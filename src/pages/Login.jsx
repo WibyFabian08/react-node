@@ -9,8 +9,7 @@ const qs = require("querystring");
 const api = "http://localhost:3001";
 
 const Login = (props) => {
-
-  const {dispatch} = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const initialState = {
     email: "",
@@ -51,14 +50,19 @@ const Login = (props) => {
     axios
       .post(api + "/auth/login", qs.stringify(requestBody), config)
       .then((res) => {
-        if (res.data.success === true) {
+        if (res.data.success === true && res.data.isVerified === 1) {
           dispatch({
             type: "LOGIN",
             payload: res.data,
           });
 
-          props.history.push('/home')
-
+          props.history.push("/home");
+        } else if (res.data.success === true && res.data.isVerified === 0) {
+          setData({
+            ...data,
+            isSubmit: false,
+            errorMessage: "Anda Belum Verifikasi Email, Cek Email!!",
+          });
         } else {
           setData({
             ...data,
@@ -105,16 +109,20 @@ const Login = (props) => {
                 />
               </Form.Group>
 
-              {
-                data.errorMessage && (
-                  <div className='alert alert-danger' role='alert'>
-                    {data.errorMessage}
-                  </div>
-                )
-              }
+              {data.errorMessage && (
+                <div className="alert alert-danger" role="alert">
+                  {data.errorMessage}
+                </div>
+              )}
 
-              <Button variant="primary" type="submit" className="mt-2" block disable={data.isSbumit}>
-                {data.isSubmit ? 'Loading' : 'Login'}
+              <Button
+                variant="primary"
+                type="submit"
+                className="mt-2"
+                block
+                disable={data.isSbumit}
+              >
+                {data.isSubmit ? "Loading" : "Login"}
               </Button>
             </Form>
             <p className="mt-3 text-center">

@@ -1,8 +1,8 @@
 import React from "react";
-import { Navbar, Button, Form, Nav, NavDropdown } from "react-bootstrap";
+import { Navbar, Button, Form, Nav } from "react-bootstrap";
 import { Link } from 'react-router-dom';
 
-const NavbarAll = () => {
+const NavbarPublik = () => {
   return (
     <div>
       <Navbar bg="light" expand="lg">
@@ -27,4 +27,4 @@ const NavbarAll = () => {
   );
 };
 
-export default NavbarAll;
+export default NavbarPublik;

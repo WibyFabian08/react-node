@@ -4,7 +4,7 @@ import { Redirect } from 'react-router-dom';
 
 const Home = () => {
 
-    const {state, dispatch} = useContext(AuthContext);
+    const {state} = useContext(AuthContext);
 
     let token = JSON.parse(localStorage.getItem('token'));
 

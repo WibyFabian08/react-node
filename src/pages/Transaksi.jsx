@@ -1,10 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Jumbotron, Button } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
-import { AuthContext } from "../App";
 
 const Transaksi = () => {
-  const { state, dispatch } = useContext(AuthContext);
 
   let token = JSON.parse(localStorage.getItem('token'));
 

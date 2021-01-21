@@ -6,14 +6,8 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
 } from "react-router-dom";
-import Login from "../src/pages/Login";
-import Register from "../src/pages/Register";
-import Home from "./pages/Home";
-import LandingPage from "./pages/LandingPage";
-import Transaksi from "../src/pages/Transaksi";
-import ListMahasiswa from "./pages/ListMahasiswa";
+import { Login, ListMahasiswa, Transaksi, LandingPage, Home, Register } from './pages'
 
 // membuat Context
 export const AuthContext = createContext();

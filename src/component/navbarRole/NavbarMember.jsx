@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 const NavbarMember = () => {
 
-  const { state, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   return (
     <div>
